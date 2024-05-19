@@ -1,8 +1,8 @@
-## Лабораторная работа №1 
-### Схему БД можно восстановить из бэкап [файла](https://github.com/badasqi/LR_EDB/blob/main/LR1/EDB_backup_db_LR1.sql)
+# Лабораторная работа №1 
+## Схему БД можно восстановить из бэкап [файла](https://github.com/badasqi/LR_EDB/blob/main/LR1/EDB_backup_db_LR1.sql)
 
-#### Типовые запросы к БД
-##### Получение списков данных:
+### Типовые запросы к БД
+#### Получение списков данных:
 ```sql
 -- Список всех клиентов
 SELECT * FROM customer;
@@ -45,7 +45,7 @@ SELECT * FROM customer WHERE name LIKE 'customer-12345';
 SELECT p.name FROM product_in_shop pis LEFT JOIN product p ON pis.product_id = p.product_id WHERE pis.price BETWEEN 100 AND 5000;
 ```
 
-#### Вызов хранимых процедур (вставка в каждую таблицу по миллиону строк тестовых данных):
+### Вызов хранимых процедур (вставка в каждую таблицу по миллиону строк тестовых данных):
 ```sql
 DO $$
 BEGIN
@@ -59,9 +59,11 @@ BEGIN
 	CALL generate_online_orders(1000000);
 END $$;
 ```
-#### Тестирование запросов
+### Тестирование запросов:
 ![](https://github.com/badasqi/LR_EDB/blob/main/LR1/img/search.png)
 ![](https://github.com/badasqi/LR_EDB/blob/main/LR1/img/search1.png)
 ![](https://github.com/badasqi/LR_EDB/blob/main/LR1/img/aggregation.png)
 ![](https://github.com/badasqi/LR_EDB/blob/main/LR1/img/aggregation1.png)
 ![](https://github.com/badasqi/LR_EDB/blob/main/LR1/img/aggregation2.png)
+
+### Оптимизация конфигурации сервера:
