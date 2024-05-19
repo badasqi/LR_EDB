@@ -57,9 +57,6 @@ CREATE INDEX IF NOT EXISTS ix_manufacturer_name
 ### Product
 ```sql
 -- Table: public.product
-
--- DROP TABLE IF EXISTS public.product;
-
 CREATE TABLE IF NOT EXISTS public.product
 (
     product_id integer NOT NULL DEFAULT nextval('product_product_id_seq'::regclass),
@@ -78,12 +75,35 @@ TABLESPACE pg_default;
 
 ALTER TABLE IF EXISTS public.product
     OWNER to postgres;
+
 -- Index: ix_product_name
-
--- DROP INDEX IF EXISTS public.ix_product_name;
-
 CREATE INDEX IF NOT EXISTS ix_product_name
     ON public.product USING btree
+    (name COLLATE pg_catalog."default" ASC NULLS LAST)
+    TABLESPACE pg_default;
+```
+
+### Online store
+```sql
+-- Table: public.online_store
+CREATE TABLE IF NOT EXISTS public.online_store
+(
+    online_store_id integer NOT NULL DEFAULT nextval('online_store_online_store_id_seq'::regclass),
+    name character varying(255) COLLATE pg_catalog."default",
+    store_type store_type,
+    CONSTRAINT online_store_pkey PRIMARY KEY (online_store_id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.online_store
+    OWNER to postgres;
+-- Index: ix_online_store_name
+
+-- DROP INDEX IF EXISTS public.ix_online_store_name;
+
+CREATE INDEX IF NOT EXISTS ix_online_store_name
+    ON public.online_store USING btree
     (name COLLATE pg_catalog."default" ASC NULLS LAST)
     TABLESPACE pg_default;
 ```
