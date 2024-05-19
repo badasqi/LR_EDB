@@ -1,5 +1,5 @@
 ## Скрипты создания таблиц в БД
-```
+```sql
 CREATE TABLE IF NOT EXISTS public.customer
 (
     customer_id integer NOT NULL DEFAULT nextval('customer_customer_id_seq'::regclass),
