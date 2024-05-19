@@ -30,6 +30,11 @@ JOIN product_in_shop pis ON pi.product_in_shop_id = pis.product_in_shop_id
 JOIN product p ON pis.product_id = p.product_id 
 GROUP BY p.name;
 
+##### Поиск:
+```sql
+SELECT * FROM customer WHERE name LIKE 'customer-12345';
+SELECT p.name FROM product_in_shop pis LEFT JOIN product p ON pis.product_id = p.product_id WHERE pis.price BETWEEN 100 AND 5000;
+```
 
 -- Рассчёт стоимости суммарной стоимости заказа
 SELECT o.order_online_id, SUM(pis.price) AS order_price
