@@ -73,7 +73,7 @@ END $$;
 
 
 ### Оптимизация запросов
-Выполним explan одного из самых медленных запросов запросов:
+Выполним explain одного из самых медленных запросов запросов:
 ```sql
 EXPLAIN ANALYZE
 SELECT o.order_online_id, SUM(pis.price) AS order_price
