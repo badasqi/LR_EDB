@@ -67,3 +67,17 @@ END $$;
 ![](https://github.com/badasqi/LR_EDB/blob/main/LR1/img/aggregation2.png)
 
 ### Оптимизация конфигурации сервера:
+
+### Оптимизация схемы БД (добавил индексы):
+```sql
+-- Создание новых индексов
+
+CREATE INDEX ix_online_order_purchase_id ON online_order(purchase_id);
+CREATE INDEX ix_purchase_store_id ON purchase(store_id);
+
+CREATE INDEX ix_purchase_item_purchase_id ON purchase_item(purchase_id);
+CREATE INDEX ix_purchase_item_product_in_shop_id ON purchase_item(product_in_shop_id);
+
+CREATE INDEX ix_product_in_shop_store_id ON product_in_shop(store_id);
+CREATE INDEX ix_product_in_product_id ON product_in_shop(product_id);
+```
