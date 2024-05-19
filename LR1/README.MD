@@ -68,6 +68,18 @@ END $$;
 
 ### Оптимизация конфигурации сервера:
 
+### Оптимизация запросов
+Выполним explan одного из самых медленных запросов запросов:
+```sql
+EXPLAIN ANALYZE
+SELECT o.order_online_id, SUM(pis.price) AS order_price
+FROM online_order o
+JOIN purchase p ON o.purchase_id = p.purchase_id
+JOIN purchase_item pi ON pi.purchase_id = p.purchase_id
+JOIN product_in_shop pis ON pis.product_in_shop_id = pi.product_in_shop_id
+GROUP BY o.order_online_id ORDER BY order_price DESC;
+```
+
 ### Оптимизация схемы БД (добавил индексы):
 ```sql
 -- Создание новых индексов
