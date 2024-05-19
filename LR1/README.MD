@@ -29,6 +29,7 @@ FROM purchase_item pi
 JOIN product_in_shop pis ON pi.product_in_shop_id = pis.product_in_shop_id 
 JOIN product p ON pis.product_id = p.product_id 
 GROUP BY p.name;
+```
 
 ##### Поиск:
 ```sql
