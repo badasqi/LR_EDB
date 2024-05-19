@@ -1,7 +1,7 @@
 ## Лабораторная работа №1 
 
 #### Типовые запросы к БД
-##### Получение списков данных
+##### Получение списков данных:
 ```sql
 -- Список всех клиентов
 SELECT * FROM customer;
@@ -14,7 +14,29 @@ select o.order_online_id, c.name, o.order_date, o.status
 FROM online_order o JOIN customer c ON o.customer_id = c.customer_id;
 ```
 
-#### БД можно восстановить из бэкап файла и вызвать хранимые процедуры следующим скриптом:
+##### Агрегация:
+```sql
+-- Количество заказов по каждому клиенту
+select count(o.order_online_id) as count_order, c.name 
+FROM online_order o JOIN customer c ON o.customer_id = c.customer_id GROUP by c.name;
+
+-- Количество продаж по конкретному продукту по всем магазинам
+select p.name, sum(pi.amount) as amount_sold from purchase_item pi join product_in_shop pis 
+ON pi.product_in_shop_id = pis.product_in_shop_id JOIN product p ON pis.product_id = p.product_id 
+GROUP BY p.name;
+
+
+-- Рассчёт стоимости суммарной стоимости заказа
+SELECT o.order_online_id, SUM(pis.price) AS order_price
+FROM online_order o
+JOIN purchase p ON o.purchase_id = p.purchase_id
+JOIN purchase_item pi ON pi.purchase_id = p.purchase_id
+JOIN product_in_shop pis ON pis.product_in_shop_id = pi.product_in_shop_id
+GROUP BY o.order_online_id ORDER BY order_price DESC;
+```
+
+
+### БД можно восстановить из бэкап файла и вызвать хранимые процедуры следующим скриптом:
 ```sql
 DO $$
 BEGIN
