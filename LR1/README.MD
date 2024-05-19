@@ -1,4 +1,7 @@
 # Лабораторная работа №1 
+## ER модель БД:
+[](https://github.com/badasqi/LR_EDB/blob/main/LR1/img/LR1_EDB.png)
+
 ## Схему БД можно восстановить из бэкап [файла](https://github.com/badasqi/LR_EDB/blob/main/LR1/EDB_backup_db_LR1.sql)
 
 ### Типовые запросы к БД
