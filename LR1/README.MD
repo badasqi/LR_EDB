@@ -68,8 +68,8 @@ END $$;
 
 ### Оптимизация конфигурации сервера:
 ![](https://github.com/badasqi/LR_EDB/blob/main/LR1/img/optimizeconf1.png)
-![](https://github.com/badasqi/LR_EDB/blob/main/LR1/img/optimizeconf1.png)
-![](https://github.com/badasqi/LR_EDB/blob/main/LR1/img/optimizeconf1.png)
+![](https://github.com/badasqi/LR_EDB/blob/main/LR1/img/optimizeconf2.png)
+![](https://github.com/badasqi/LR_EDB/blob/main/LR1/img/optimizeconf3.png)
 
 
 ### Оптимизация запросов
