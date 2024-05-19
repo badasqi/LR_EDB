@@ -60,4 +60,4 @@ BEGIN
 END $$;
 ```
 #### Тестирование запросов
-
+![Alt text](https://github.com/badasqi/LR_EDB/blob/main/LR1/img/search.png)
