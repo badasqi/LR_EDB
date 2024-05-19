@@ -61,3 +61,7 @@ END $$;
 ```
 #### Тестирование запросов
 ![](https://github.com/badasqi/LR_EDB/blob/main/LR1/img/search.png)
+![](https://github.com/badasqi/LR_EDB/blob/main/LR1/img/search1.png)
+![](https://github.com/badasqi/LR_EDB/blob/main/LR1/img/aggregation.png)
+![](https://github.com/badasqi/LR_EDB/blob/main/LR1/img/aggregation1.png)
+![](https://github.com/badasqi/LR_EDB/blob/main/LR1/img/aggregation2.png)
