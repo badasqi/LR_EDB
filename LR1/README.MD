@@ -67,6 +67,10 @@ END $$;
 ![](https://github.com/badasqi/LR_EDB/blob/main/LR1/img/aggregation2.png)
 
 ### Оптимизация конфигурации сервера:
+![](https://github.com/badasqi/LR_EDB/blob/main/LR1/img/optimizeconf1.png)
+![](https://github.com/badasqi/LR_EDB/blob/main/LR1/img/optimizeconf1.png)
+![](https://github.com/badasqi/LR_EDB/blob/main/LR1/img/optimizeconf1.png)
+
 
 ### Оптимизация запросов
 Выполним explan одного из самых медленных запросов запросов:
@@ -79,6 +83,7 @@ JOIN purchase_item pi ON pi.purchase_id = p.purchase_id
 JOIN product_in_shop pis ON pis.product_in_shop_id = pi.product_in_shop_id
 GROUP BY o.order_online_id ORDER BY order_price DESC;
 ```
+![](https://github.com/badasqi/LR_EDB/blob/main/LR1/img/explain.png)
 
 ### Оптимизация схемы БД (добавил индексы):
 ```sql
@@ -93,3 +98,7 @@ CREATE INDEX ix_purchase_item_product_in_shop_id ON purchase_item(product_in_sho
 CREATE INDEX ix_product_in_shop_store_id ON product_in_shop(store_id);
 CREATE INDEX ix_product_in_product_id ON product_in_shop(product_id);
 ```
+
+### Повторный тест выполнения запросов:
+![](https://github.com/badasqi/LR_EDB/blob/main/LR1/img/optimizequery1.png)
+![](https://github.com/badasqi/LR_EDB/blob/main/LR1/img/optimizequery.png)
