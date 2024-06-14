@@ -64,11 +64,10 @@ BEGIN
     FOR i IN 1..num LOOP
         random_category := product_categories[CEIL(array_length(product_categories, 1) * random())::INT];
         
-        -- Получаем соответствующего производителя для выбранной категории
+        -- Получаем соответствующего производителя для случайной категории
         manufacturer_name := category_manufacturers[array_position(product_categories, random_category)];
         SELECT manufacturer_id INTO manufacturer_uuid FROM manufacturer WHERE name = manufacturer_name;
 
-        -- Генерация случайной цены
         random_price := ROUND((RANDOM() * 1000)::numeric, 2);
 
         INSERT INTO product (name, price, manufacturer_id, category)
