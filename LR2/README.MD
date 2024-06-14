@@ -73,9 +73,9 @@ BEGIN
         INSERT INTO product (name, price, manufacturer_id, category)
         VALUES (
             'Product ' || i,
-            random_price,  -- Используем случайную цену для продукта
+            random_price,
             manufacturer_uuid,
-            random_category  -- Используем случайную категорию
+            random_category
         );
     END LOOP;
 END;
