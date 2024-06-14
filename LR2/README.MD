@@ -174,7 +174,7 @@ COPY (
 #### [csv файл с датасетом](https://drive.google.com/file/d/1sAohe3Cr0kD-05ClAgMkIShu9OBDZE9I/view?usp=sharing)
 ### (2-6) Была спроектирована и обучена НС. Результаты по ссылке: [Обработка данных, подбор гиперпараметров, обучение лучшей модели и оценка метрик MAE, R^2 на тестовой выборке](https://github.com/badasqi/LR_EDB/blob/main/LR2_EDB.ipynb).
 ### Результаты
-Подробные результаты этих этапов можно найти по ссылке: [https://github.com/badasqi/LR_EDB/blob/main/LR2_EDB.ipynb][1].
+Блокнот с результатами: [https://github.com/badasqi/LR_EDB/blob/main/LR2_EDB.ipynb][1].
 
 [1]: https://github.com/badasqi/LR_EDB/blob/main/LR2_EDB.ipynb
 
