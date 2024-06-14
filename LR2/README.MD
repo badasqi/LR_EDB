@@ -54,22 +54,14 @@ DECLARE
     manufacturer_uuid INT;
 BEGIN
 
-    -- Собираем все существующие manufacturer_id в массив
     SELECT array_agg(manufacturer_id) INTO manufacturer_ids FROM manufacturer;
 
     FOR i IN 1..num LOOP
-        -- Выбор случайной категории
         random_category := product_categories[CEIL(array_length(product_categories, 1) * random())::INT];
         
         -- Получаем соответствующего производителя для выбранной категории
         manufacturer_name := category_manufacturers[array_position(product_categories, random_category)];
         SELECT manufacturer_id INTO manufacturer_uuid FROM manufacturer WHERE name = manufacturer_name;
-
-        -- Если manufacturer_uuid не найден, пропускаем итерацию
-        IF manufacturer_uuid IS NULL THEN
-            RAISE NOTICE 'Производитель для категории "%" не найден. Пропуск.', random_category;
-            CONTINUE;
-        END IF;
 
         -- Генерация случайной цены
         random_price := ROUND((RANDOM() * 1000)::numeric, 2);
