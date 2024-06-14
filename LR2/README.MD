@@ -164,4 +164,5 @@ COPY (
 ) TO 'C:/sales_by_gender.csv' WITH CSV HEADER;
 
 ```
+### (2-6) Была спроектирована и обучена НС. [Обработка данных, подбор гиперпараметров, обучение лучшей модели и оценка результатов](https://github.com/badasqi/LR_EDB/blob/main/LR2_EDB.ipynb). 
 
