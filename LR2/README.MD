@@ -2,8 +2,6 @@
 ## ER модель БД была доработана для возможности формулировки задачи для машинного обучения. Был добавлен столбец gender для Customer и столбец category для Product:
 
 ## 1) Задача для машинного обучения заключается в прогнозировании количества товаров которое может быть продано случайной женщине или мужчине по всем онлайн магазинами портала.
-#### [csv файл с датасетом](https://drive.google.com/file/d/1sAohe3Cr0kD-05ClAgMkIShu9OBDZE9I/view?usp=sharing)
-#### []()
 ### Были переписаны процедуры Product для генерации продуктов со случайной категорией (одной из 100 заданных) :
 ```sql
 DECLARE
@@ -164,7 +162,9 @@ COPY (
         os.product_name,
         os.product_category
 ) TO 'C:/sales_by_gender.csv' WITH CSV HEADER;
-
 ```
+#### Пример данных
+[](https://github.com/badasqi/LR_EDB/blob/main/LR2/img/dataset.png)
+#### [csv файл с датасетом](https://drive.google.com/file/d/1sAohe3Cr0kD-05ClAgMkIShu9OBDZE9I/view?usp=sharing)
 ### (2-6) Была спроектирована и обучена НС. Результаты по ссылке : [Обработка данных, подбор гиперпараметров, обучение лучшей модели и оценка результатов](https://github.com/badasqi/LR_EDB/blob/main/LR2_EDB.ipynb).
 
