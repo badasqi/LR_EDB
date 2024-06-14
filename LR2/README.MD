@@ -128,7 +128,6 @@ COPY (
             prod.name,
             prod.category
     ),
-    -- Получение информации о поле для каждого заказа
     OrderGender AS (
         SELECT
             o.order_online_id,
@@ -138,7 +137,7 @@ COPY (
             JOIN purchase p ON o.purchase_id = p.purchase_id
             JOIN customer c ON c.customer_id = o.customer_id
     )
-    -- Выборка суммарного количества проданных единиц и суммарной стоимости товара для каждого пола
+    -- Выборка суммарного кол-ва проданных товаров и суммарной стоимости товара для каждого каждого пола
     SELECT
         os.product_name,
         os.product_category,
