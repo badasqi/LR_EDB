@@ -111,60 +111,37 @@ END
 COPY (
     WITH OrderSummary AS (
         -- Подсчёт суммарной стоимости и количества продаж по каждому заказу
-        SELECT
-            o.order_online_id,
-            prod.name AS product_name,
-            prod.category AS product_category,
-            SUM(pis.price) AS order_price,
-            SUM(pi.amount) AS total_amount_sold
-        FROM
-            online_order o
-            JOIN purchase p ON o.purchase_id = p.purchase_id
-            JOIN purchase_item pi ON pi.purchase_id = p.purchase_id
-            JOIN product_in_shop pis ON pis.product_in_shop_id = pi.product_in_shop_id
-            JOIN product prod ON pis.product_id = prod.product_id
-        GROUP BY
-            o.order_online_id,
-            prod.name,
-            prod.category
+        SELECT o.order_online_id, prod.name AS product_name, prod.category AS product_category, SUM(pis.price) AS order_price, SUM(pi.amount) AS total_amount_sold
+            FROM online_order o
+        JOIN purchase p ON o.purchase_id = p.purchase_id
+        JOIN purchase_item pi ON pi.purchase_id = p.purchase_id
+        JOIN product_in_shop pis ON pis.product_in_shop_id = pi.product_in_shop_id
+        JOIN product prod ON pis.product_id = prod.product_id
+        GROUP BY o.order_online_id, prod.name, prod.category
     ),
     OrderGender AS (
-        SELECT
-            o.order_online_id,
-            c.gender
-        FROM
-            online_order o
-            JOIN purchase p ON o.purchase_id = p.purchase_id
-            JOIN customer c ON c.customer_id = o.customer_id
-    )
+        SELECT o.order_online_id, c.gender
+            FROM online_order o
+        JOIN purchase p ON o.purchase_id = p.purchase_id
+        JOIN customer c ON c.customer_id = o.customer_id)
+
     -- Выборка суммарного кол-ва проданных товаров и суммарной стоимости товара для каждого каждого пола
-    SELECT
-        os.product_name,
-        os.product_category,
-        'Female' AS gender,
+    SELECT os.product_name, os.product_category, 'Female' AS gender, 
         SUM(CASE WHEN og.gender = 'female' THEN os.total_amount_sold ELSE 0 END) AS amount_sold,
         SUM(CASE WHEN og.gender = 'female' THEN os.order_price ELSE 0 END) AS total_price
-    FROM
-        OrderSummary os
-        JOIN OrderGender og ON os.order_online_id = og.order_online_id
-    GROUP BY
-        os.product_name,
-        os.product_category
+    FROM OrderSummary os
+    JOIN OrderGender og ON os.order_online_id = og.order_online_id
+    GROUP BY os.product_name, os.product_category
 
     UNION ALL
 
-    SELECT
-        os.product_name,
-        os.product_category,
-        'Male' AS gender,
+    SELECT os.product_name, os.product_category, 'Male' AS gender,
         SUM(CASE WHEN og.gender = 'male' THEN os.total_amount_sold ELSE 0 END) AS amount_sold,
         SUM(CASE WHEN og.gender = 'male' THEN os.order_price ELSE 0 END) AS total_price
     FROM
-        OrderSummary os
-        JOIN OrderGender og ON os.order_online_id = og.order_online_id
-    GROUP BY
-        os.product_name,
-        os.product_category
+    OrderSummary os
+    JOIN OrderGender og ON os.order_online_id = og.order_online_id
+    GROUP BY os.product_name, os.product_category
 ) TO 'C:/sales_by_gender.csv' WITH CSV HEADER;
 ```
 #### Пример данных
